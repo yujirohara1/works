@@ -1,0 +1,360 @@
+{% extends 'common.html' %}
+ 
+{% block title %} PKG-MODEL {% endblock %}
+
+{% block content %}
+
+%div.container-fluid
+  %div.row
+    %div.col-7
+      %div.row
+        %div.col-auto
+          %div.input-group.input-group-sm.mb-3
+            %span.input-group-text
+              プロジェクトID
+            %select.form-select#selectProjectMain
+        %div.col-auto
+          %div#divTodaysMembersArea
+    %div.col-5(style="text-align:right")
+      %a.btn.btn-danger.btn-sm#btnRestIssueCount(style="margin-right: 100px;font-weight: bold;font-size: 18px;border-radius: 15px;")
+        残チケット数...
+      %a.btn.btn-success.btn-sm#btnModalEnterStatus(style="margin-right:10px")
+        入場中
+      %a.btn.btn-dark.btn-sm#btnOffCanvas(data-bs-toggle="offcanvas" href="#offcanvasSetting" aria-controls="offcanvasSetting" role="button" style="margin-right:10px")
+        プロジェクト設定
+      %a.btn.btn-dark.btn-sm(href="/logout/" role="button")
+        サインアウト
+  %div.row
+    %hr
+  %div.row
+    %div.col-auto
+      %div.subTitle
+        パフォーマンスチャート
+    %div.col-auto
+      %div.input-group.input-group-sm.mb-3
+        %span.input-group-text
+          計測対象期間
+        %input.form-control#inpMeasureStartDate(type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="yyyy-MM-dd")
+        %span.input-group-text
+          ～
+        %input.form-control#inpMeasureEndDate(type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="yyyy-MM-dd")
+    %div.col-auto
+      %a#btnGet.btn.btn-dark.btn-sm(type="button")
+        表示
+    %div.col-auto
+      %div#divLabelProcessing2
+        &nbsp;
+
+  %div.row
+    %div.col-md-3
+      %div#divMainTableAreaLeft
+    %div.col-md-9
+      %div#linechart_material
+
+  %hr
+
+  %div.row
+    %div.col-md-9
+      %div.row
+        %div.col-auto
+          %div.subTitle
+            イヤリーヒートマップ
+        %div.col-auto
+          %div.input-group.input-group-sm.mb-3
+            %span.input-group-text
+              計測対象年度
+            %input.form-control#inpYear(list="yearlistOptions" placeholder="西暦年度を入力")
+            %datalist#yearlistOptions
+
+        %div.col-auto
+          %div.form-check.form-check-inline
+            %input.form-check-input#inlineRadio1(type="radio" name="inlineRadioOptions" value="incident" checked)
+            %label.form-check-label(for="inlineRadio1")
+              発生
+          %div.form-check.form-check-inline
+            %input.form-check-input#inlineRadio2(type="radio" name="inlineRadioOptions" value="finished" )
+            %label.form-check-label(for="inlineRadio2")
+              消化
+          %div.form-check.form-check-inline
+            %input.form-check-input#inlineRadio3(type="radio" name="inlineRadioOptions" value="diff" )
+            %label.form-check-label(for="inlineRadio3")
+              差引
+
+        %div.col-auto
+          %a#btnGetHotOrCold.btn.btn-dark.btn-sm(type="button")
+            表示
+        %div.col-auto
+          %div#divLabelProcessing3
+            &nbsp;
+
+    %div.col-md-3
+      %div.row
+        %div.col-auto
+          %div.subTitle
+            クローザーランク
+        %div.col-auto
+          %a#btnGetAssigned.btn.btn-dark.btn-sm(type="button")
+            表示
+
+  %div.row
+    %div.col-md-9
+      %div#divHotOrColdTableArea(style="text-align:center; vertical-align:middle")
+    %div.col-md-3
+      %div#divAssignedTableArea(style="text-align:center; vertical-align:middle")
+
+  %hr
+
+  %div.row
+    %div.col-md-auto
+      %div.subTitle
+        形態素解析
+    %div.col-auto
+      %a#btnTextMining.btn.btn-dark.btn-sm(type="button")
+        表示
+    %div.col-auto
+      %div#divLabelProcessing3
+        &nbsp;
+
+  %div.row
+    %div.col-md-12
+      %div#divTextMiningArea(style="text-align:center; vertical-align:middle")
+
+  %hr
+
+  %div.row
+    %div.col-md-auto
+      %div.subTitle
+        コンタクトレシオ
+
+    %div.col-auto
+      %div.form-check.form-check-inline
+        %input.form-check-input#rdContactRatio1(type="radio" name="rdContactRatio" value="finished" checked)
+        %label.form-check-label(for="rdContactRatio1")
+          完了
+      %div.form-check.form-check-inline
+        %input.form-check-input#rdContactRatio2(type="radio" name="rdContactRatio" value="unfinished" )
+        %label.form-check-label(for="rdContactRatio2")
+          未完了
+
+    %div.col-auto
+      %a#btnGetAssignBarChart.btn.btn-dark.btn-sm(type="button")
+        表示
+    %div.col-auto
+      %div#divLabelProcessing4
+        &nbsp;
+  %div.row
+    %div.col-auto#chkAssignedContactRatio
+
+  %div.row
+    %div.col-md-12
+      %div#barchartMaterialArea(style="text-align:center; vertical-align:top")
+
+  %hr
+
+  %div.row
+    %div.col-md-auto
+      %div.subTitle
+        レバレッジイシュー
+    %div.col-auto
+      %a#btnGetLeverageSummary.btn.btn-dark.btn-sm(type="button")
+        表示
+    %div.col-auto
+      %div#divLabelProcessing5
+        &nbsp;
+  %div.row
+    %div.col-md-12
+      %div#divLeverageTableArea(style="text-align:center; vertical-align:middle")
+
+  %hr
+
+  %div.row
+    %div.col-md-auto
+      %div.subTitle
+        コミットメントサマリー
+    %div.col-auto
+      %a#btnGetCommitmentSummary.btn.btn-dark.btn-sm(type="button")
+        表示
+    %div.col-auto
+      %div#divLabelProcessing6
+        &nbsp;
+  %div.row
+    %div.col-md-12
+      %div#divCommitmentSummaryTableArea(style="text-align:center; vertical-align:middle")
+
+
+%div.container-fluid
+  
+
+
+%div#loading
+  %div.spinner-border(role="status" style="position:relative; left:50%; top:50%; width: 6rem; height: 6rem;")
+
+<div id="loader-bg" class="is-hide">
+    <div id="loader" class="is-hide">
+        <p>
+            <img src="../static/image/loading.gif">
+        </p>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalTodaysMembersSetting" tabindex="-1" aria-labelledby="modalTodaysMembersSettingTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      %div.modal-header
+        <h5 class="modal-title" id="modalTodaysMembersSettingTitle">本日の保守当番エンジニアを教えてください</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      %div.modal-body
+        %div#divTodaysMemberSettingTableArea(style="text-align:center; vertical-align:middle")
+        
+      %div.modal-footer
+        %a.btn.btn-secondary#btnCloseTodaysMember(type="button" data-bs-dismiss="modal")
+          わからない
+        %a.btn.btn-primary.disabled#btnUpdateTodaysMember(type="button")
+          登録
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="modalEnterStatus" tabindex="-1" aria-labelledby="modalEnterStatusTitle" style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable modal-xl">
+    <div class="modal-content">
+      %div.modal-header
+        <h5 class="modal-title" id="modalEnterStatusTitle">進行中 かつ 入場あり</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
+      %div.modal-body
+        %div#divEnterStatusTableArea(style="text-align:center; vertical-align:middle")
+        
+      %div.modal-footer
+        %a.btn.btn-secondary#btnCloseEnterStatus(type="button" data-bs-dismiss="modal")
+          閉じる
+    </div>
+  </div>
+</div>
+
+
+<!-- offcanvas -->
+%div.offcanvas.offcanvas-start#offcanvasSetting(tabindex="-1" aria-labelledby="offcanvasSettingLabel")
+  %div.offcanvas-header
+    %h5.offcanvas-title#offcanvasSettingLabel
+      %div.row
+        %div.col-auto
+          プロジェクト設定
+        %div.col-auto
+          %select.form-select.form-select-sm#selectProjectSetting
+    %button.btn-close.text-reset(type="button" data-bs-dismiss="offcanvas" aria-label="Close")
+  %div.offcanvas-body
+    %hr
+    %div.d-flex.align-items-start(style="height:100%")
+      %div.nav.nav-pills#v-setting-tab(role="tablist" aria-orientation="vertical" style="width:30%")
+        %a.nav-link#vTabSetting-AA(data-bs-toggle="pill" data-bs-target="#v-setting-AA" type="button" role="tab" aria-controls="v-setting-AA" aria-selected="false")
+          データ収集
+        %a.nav-link#vTabSetting-BB(data-bs-toggle="pill" data-bs-target="#v-setting-BB" type="button" role="tab" aria-controls="v-setting-BB" aria-selected="false")
+          ユーザID変換
+        %a.nav-link#vTabSetting-CC(data-bs-toggle="pill" data-bs-target="#v-setting-CC" type="button" role="tab" aria-controls="v-setting-CC" aria-selected="false")
+          環境変数
+        %a.nav-link#vTabSetting-DD(data-bs-toggle="pill" data-bs-target="#v-setting-DD" type="button" role="tab" aria-controls="v-setting-DD" aria-selected="false")
+          カスタムフィールド
+        %a.nav-link#vTabSetting-EE(data-bs-toggle="pill" data-bs-target="#v-setting-EE" type="button" role="tab" aria-controls="v-setting-EE" aria-selected="false")
+          当番表
+      %div.tab-content#v-setting-tabContent(style="width:100%; height:100%; border-left:1px solid #d3d3d3; padding-left:20px")
+        %div.tab-pane.face.loadableTable.col-12#v-setting-AA(role="tabpanel" aria-labelledby="v-setting-AA-tab" style="")
+          %div.row
+            %div.col-8
+              %div.input-group.input-group-sm.mb-3
+                %a#btnGetRealMaxNo.btn.btn-dark.btn-sm(type="button" style="width:50%; text-align:left")
+                  最大チケット番号（実際）
+                %input.form-control#inpRealMaxIssueId(type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm")
+                %a#btnDummy45548.btn.btn-dark.btn-sm(type="button" style="visibility :hidden")
+                  hoge
+
+            %div.col-8
+              %div.input-group.input-group-sm.mb-3
+                %a#btnGetMaxNo.btn.btn-dark.btn-sm(type="button" style="width:50%; text-align:left")
+                  最大チケット番号（収集済み）
+                %input.form-control#inpMaxIssueId(type="text" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm")
+                %a#btnCollectData.btn.btn-dark.btn-sm(type="button")
+                  同期
+                
+        %div.tab-pane.face.loadableTable.col-12#v-setting-BB(role="tabpanel" aria-labelledby="v-setting-BB-tab" style="")
+          %div#divUserNameTableArea(style="text-align:center; vertical-align:middle")
+
+        %div.tab-pane.face.loadableTable.col-12#v-setting-CC(role="tabpanel" aria-labelledby="v-setting-CC-tab" style="")
+          %div#divOsEnvironTableArea(style="text-align:center; vertical-align:middle")
+          %div.row
+            %div.col-12(style="text-align:right")
+              %a#btnUpdateOsEnvironValue.btn.btn-dark.btn-sm(type="button")
+                更新
+
+        %div.tab-pane.face.loadableTable.col-12#v-setting-DD(role="tabpanel" aria-labelledby="v-setting-DD-tab" style="")
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  開始日を意味するカスタムフィールドID
+                %input.form-control#settingDefineStartDate(type="text" )
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  終了日を意味するカスタムフィールドID
+                %input.form-control#settingDefineFinishedDate(type="text" )
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  取引先を意味するカスタムフィールドID
+                %input.form-control#settingDefineCustomer(type="text" )
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  担当者を意味するカスタムフィールドID
+                %input.form-control#settingDefineAssignedTo(type="text" )
+          
+          %div.row
+            %div.col-12(style="text-align:right")
+              %a#btnUpdateCustomFieldsValue.btn.btn-dark.btn-sm(type="button")
+                更新
+
+        %div.tab-pane.face.loadableTable.col-12#v-setting-EE(role="tabpanel" aria-labelledby="v-setting-EE-tab" style="")
+          %div#divDutyMemberScheduleTableArea(style="text-align:center; vertical-align:middle")
+
+
+
+<div class="modal fade" id="modalErrorMessage" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h6 class="modal-title" id="staticBackdropLabel">システムエラー</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <div>F5キーで再読み込みしたあと、もう一度操作をやり直してください。</div>
+        <br>
+        <hr>
+        <div><span class="badge bg-secondary">エラーの詳細</span></div>
+        <div id="divErrorDetail"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">閉じる</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+  <script src="../static/holidays/lib/japanese-holidays.min.js"></script>
+  <script src="../static/main/js/constants.js"></script>
+  <script src="../static/main/js/main.js"></script>
+
+  
+{% endblock  %}
+
+

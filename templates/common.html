@@ -1,0 +1,58 @@
+{% block doc -%}
+<!DOCTYPE html>
+<html{% block html_attribs %}{% endblock html_attribs %}>
+{%- block html %}
+  <head>
+    {%- block head %}
+    <title>{% block title %}{{title|default}}{% endblock title %}</title>
+
+    <script src="../static/bootstrap5/js/bootstrap.bundle.min.js"></script>
+    <script src="../static/chartjs/js/chart.min.js"></script>
+    <script src="../static/gstatic/charts/loader.js"></script>
+    <!-- <script src="https://www.gstatic.com/charts/loader.js"></script> -->
+
+    {%- block metas %}
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {%- endblock metas %}
+
+    {%- block styles %}
+
+    <link href="../static/bootstrap5/css/bootstrap.min.css" rel="stylesheet" >
+    <link href="../static/main/css/main.css" rel="stylesheet" >
+    <link href="../static/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="../static/map/css/map.css" rel="stylesheet" >
+    
+    {%- endblock styles %}
+    {%- endblock head %}
+    <link rel="icon" href="../static/x-diamond-fill.svg" type="image/svg+xml">
+  </head>
+  <body{% block body_attribs %}{% endblock body_attribs %}>
+    {% block body -%}
+      {% block navbar %}
+      {%- endblock navbar %}
+      {% block content -%}
+      {%- endblock content %}
+      {% block scripts %}
+      {%- endblock scripts %}
+    {%- endblock body %}
+  </body>
+  
+  <script>
+    var userAgent = window.navigator.userAgent.toLowerCase();
+    if(userAgent.indexOf('msie') != -1 || userAgent.indexOf('trident') != -1) {
+      var d1 = document.createElement("div");
+      d1.className="sorry-image";
+      var d2 = document.createElement("div");
+      d2.className="sorry-message";
+      d2.innerHTML="申し訳ありません。<br>インターネットエクスプローラでは動作しません。<br>グーグルクロームかマイクロソフトエッジを使って再度アクセスしてください。";
+      while( document.body.firstChild ){
+        document.body.removeChild( document.body.firstChild );
+      }
+      document.body.appendChild(d1);
+      document.body.appendChild(d2);
+    }
+  </script>
+
+{%- endblock html %}
+</html>
+{% endblock doc -%}

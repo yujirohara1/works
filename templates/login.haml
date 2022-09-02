@@ -1,0 +1,92 @@
+-extends "common.html"
+
+{% block title %} ガバメントワークス {% endblock %}
+
+{% block content %}
+
+  <div class="container py-4">
+    <header class="pb-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
+        %span.fs-4
+          <i class="bi bi-cloud-fill" style="padding-right:10px"></i>
+          Gov Tech Works　ガブテックワークス　BETA
+      </a>
+    </header>
+
+    <div class="p-5 mb-4 bg-light rounded-3">
+      <div class="container-fluid py-5">
+        <h1 class="display-5 fw-bold">財務書類作成支援の決定版</h1>
+        %p.col-md-8.fs-4
+          自治体と会計士のマッチングサイトと公会計システムを融合し、ニューノーマルな地方公会計を実現。
+        %p.col-md-8.fs-4
+          作成スケジュールや提供データの管理、公会計と固定資産管理機能、チャットによる連絡が可能。
+        %form(action="/demo/" method="POST")
+          %button#btnGotoDemo.btn.btn-success.btn-lg(type="submit")
+            体験版を利用する
+      </div>
+    </div>
+
+    <div class="row align-items-md-stretch">
+      <div class="col-md-6">
+        <div class="h-100 p-5 text-white bg-dark rounded-3">
+          %h2
+            地方公共団体さんは こちら
+          %p
+            予算データや執行データをアップロードして、会計士さん・税理士さんに財務書類の作成・監査を依頼することができます。
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  ユーザーID
+                %input.form-control(type="text" name="user_nm")
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  パスワード
+                %input.form-control(type="password" name="api_key")
+            %div.col-auto
+              %input.btn.btn-outline-light.btn-sm#btnLoginA(type="submit" value="サインイン")
+              
+
+
+
+
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="h-100 p-5 bg-light border rounded-3">
+          %h2
+            会計士さん・税理士さんは こちら
+          %p
+            地方公共団体の財務書類の作成・監査を簡単な手続きで請け負うことができます。
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  ユーザーID
+                %input.form-control(type="text" name="user_nm")
+          %div.row
+            %div.col-auto
+              %div.input-group.input-group-sm.mb-3
+                %span.input-group-text
+                  パスワード
+                %input.form-control(type="password" name="api_key")
+            %div.col-auto
+              %input.btn.btn-outline-secondary.btn-sm#btnLoginB(type="submit" value="サインイン")
+        </div>
+      </div>
+    </div>
+
+    <footer class="pt-3 mt-4 text-muted border-top">
+      © 2021
+    </footer>
+  </div>
+
+{% endblock %}
+
+{% block scripts %}
+
+<script src="../static/main/js/logintop.js"></script>
+
+{% endblock  %}
