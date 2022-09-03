@@ -47,7 +47,7 @@ function createTableCenterTop(){
       //td4.appendChild(createInTableButton("詳細","primary"));
       //td4.innerText = list[i].supplier_name;
       td1.classList.add("tdcell-center");
-      td2.classList.add("tdcell-center");
+      td2.classList.add("tdcell-left");
       td3.classList.add("tdcell-center");
       trow.appendChild(td1);
       trow.appendChild(td2);

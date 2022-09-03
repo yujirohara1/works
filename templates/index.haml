@@ -136,9 +136,9 @@
           <div id="accdPanelBody-CenterMiddle" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-CenterMiddle">
             %div.accordion-body
               %div.row
-                %div.col-10
+                %div.col-9
                   <strong>お気に入りの会計士を見つけよう。</strong>
-                %div.col-2(style="text-align:right")
+                %div.col-3(style="text-align:right")
                   %button.btn.btn-sm.btn-primary(type="button")
                     詳細検索
               %hr
@@ -233,33 +233,146 @@
         <div class="accordion-item">
           <h2 class="accordion-header" id="accdPanelHead-RightTop">
             <button id="btnAccdPanelHead-RightTop" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accdPanelBody-RightTop" aria-expanded="true" aria-controls="accdPanelBody-RightTop">
-              <i class="bi bi-boxes dashboard-bIcon"></i>スケジュール管理
+              <i class="bi bi-calendar3 dashboard-bIcon"></i>スケジュール管理
             </button>
           </h2>
           <div id="accdPanelBody-RightTop" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-RightTop">
             %div.accordion-body
-            
               %div.row
-                <a class="circle" href="#">1</a>
+                %div.input-group.input-group-sm.mb-3
+                  <span class="input-group-text" id="basic-addon1">依頼内容</span>
+                  <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                    <option value="1">令和元年度財務書類作成</option>
+                    <option value="2">令和２年度財務書類作成</option>
+                  </select>
+
+              %div.row
+                %div.col-auto
+                  %span.circle.circle-fill
+                    1
+                %div.col-auto
+                  %span.task.task-fill
+                    依頼の作成
                 
               %div.row
                 %div.col-6
-                  <div class="v_line_left">
-                    some<br> other<br> content<br>
-                  </div>
-                %div.col-6
-                  aaaa
+                  %div.v_line_left.v_line_left_fill.task_contents.task_contents_fill
+                    %div.row
+                      %div.col-12
+                        依頼内容と依頼先の決定
+                    %div.row
+                      %div.col-12
+                        作業内容の仕様合意
+                    %div.row
+                      %div.col-12
+                        作業スケジュールの確認
+                    %div.row
+                      %div.col-12
+                        &nbsp;
 
               %div.row
-                <a class="circle" href="#">1</a>
+                %div.col-auto
+                  %span.circle.circle-fill
+                    2
+                %div.col-auto
+                  %span.task.task-fill
+                    財務データ提出
+                
+              %div.row
+                %div.col-6
+                  %div.v_line_left.v_line_left_fill.task_contents.task_contents_fill
+                    %div.row
+                      %div.col-12
+                        予算科目マスタ・執行伝票データ
+                    %div.row
+                      %div.col-12
+                        仕訳パターン・変換マスタ
+                    %div.row
+                      %div.col-12
+                        固定資産台帳データ
+                    %div.row
+                      %div.col-12
+                        &nbsp;
+
+              %div.row
+                %div.col-auto
+                  %span.circle
+                    3
+                %div.col-auto
+                  %span.task
+                    仕訳情報の作成
 
               %div.row
                 %div.col-6
-                  <div class="v_line_left">
-                    some<br> other<br> content<br>
-                  </div>
+                  %div.v_line_left.task_contents
+                    %div.row
+                      %div.col-12
+                        伝票データの一括仕訳
+                    %div.row
+                      %div.col-12
+                        固定資産データ分の反映
+                    %div.row
+                      %div.col-12
+                        決算整理仕訳の作成
+                    %div.row
+                      %div.col-12
+                        &nbsp;
+
+              %div.row
+                %div.col-auto
+                  %span.circle
+                    4
+                %div.col-auto
+                  %span.task
+                    付帯情報の作成
+
+              %div.row
                 %div.col-6
-                  aaaa
+                  %div.v_line_left.task_contents
+                    %div.row
+                      %div.col-12
+                        伝票と固定資産の関連付け
+                    %div.row
+                      %div.col-12
+                        連結対象団体のデータ反映
+                    %div.row
+                      %div.col-12
+                        &nbsp;
+                    %div.row
+                      %div.col-12
+                        &nbsp;
+
+              %div.row
+                %div.col-auto
+                  %span.circle
+                    5
+                %div.col-auto
+                  %span.task
+                    成果書類の事前チェック
+
+              %div.row
+                %div.col-6
+                  %div.v_line_left.task_contents
+                    %div.row
+                      %div.col-12
+                        書類の過不足確認
+                    %div.row
+                      %div.col-12
+                        書式・体裁の調整
+                    %div.row
+                      %div.col-12
+                        数値の整合確認
+                    %div.row
+                      %div.col-12
+                        &nbsp;
+
+              %div.row
+                %div.col-auto
+                  %span.circle
+                    6
+                %div.col-auto
+                  %span.task
+                    納品完了
 
           </div>
         </div>

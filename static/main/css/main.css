@@ -398,21 +398,56 @@ table.dataTable thead tr {
 
 
 .v_line_left {
-    border-left: thick solid red;
-    padding-left: 10px;
+    border-left: 8px solid #e3e3e3;
+    padding-left: 40px;
     position:relative;
-    left: 7px;
+    left: 16px;
   }
 
 
-.circle{
+  .v_line_left_fill {
+    border-left: 8px solid #0b5fda !important;
+  }
+
+  .task{
+    font-weight: bold;
+    font-size: 1.3rem;
+    position: relative;
+    margin-top: 5px;
+    cursor: pointer;
+    color: #adadad;
+}
+
+.task-fill{
+    color: #0b5fda;
+}
+
+.task_contents{
+    font-size: .9rem;
+    color:#adadad
+}
+
+
+.task_contents_fill{
+    font-size: .9rem;
+    color:#0b5fda !important;
+    font-weight: bold;
+}
+
+
+  .circle{
     display: inline-block;
     width: 40px;
     height: 40px;
     border-radius: 50%;
-    background: skyblue;
+    background: #e3e3e3;
     text-align:center;
     line-height: 40px;
+    cursor: pointer;
+}
+.circle-fill{
+    background: #0b5fda !important;
+    color:white !important;
 }
 
 .alert-messages{
