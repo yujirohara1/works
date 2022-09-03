@@ -211,6 +211,47 @@ myCollapsible.addEventListener('hidden.bs.collapse', function () {
 
 
 
+document.getElementById("btnOpenClose").addEventListener('click', function(e) {
+  // document.getElementById("accdPanelHead-LeftTop").collapse('hide');
+  // //document.getElementById("accdPanelBody-LeftTop").collapse('hide');
+  // //document.getElementById("accdLeft").collapse('hide');
+  if(e.target.innerText == "折りたたむ"){
+    var a = document.querySelectorAll(".accordion-button");
+    a.forEach(element => {
+      element.classList.remove("collapsed");
+      element.classList.add("collapsed");
+      element.attributes["aria-expanded"].value = "false";
+      //element.classList.add("disabled");
+    });
+    
+    
+    var b = document.querySelectorAll(".accordion-collapse.collapse");
+    b.forEach(element => {
+      element.classList.remove("show");
+    });
+
+    document.getElementById("btnOpenClose").innerText = "展開する";
+  }else{
+    var a = document.querySelectorAll(".accordion-button");
+    a.forEach(element => {
+      element.classList.remove("collapsed");
+      element.attributes["aria-expanded"].value = "true";
+      //element.classList.add("disabled");
+    });
+    
+    var b = document.querySelectorAll(".accordion-collapse.collapse");
+    b.forEach(element => {
+      element.classList.remove("show");
+      element.classList.add("show");
+    });
+
+    document.getElementById("btnOpenClose").innerText = "折りたたむ";
+
+  }
+
+
+});
+
 // //
 // document.getElementById("btnAccdPanelHead-CenterTop").addEventListener('click', function(e) {
 //   e.stopPropagation(); 

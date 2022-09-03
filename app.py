@@ -99,8 +99,8 @@ def load_user(user_id):
   login_user(uuser)
   return uuser
 
-db_uri = "postgresql://postgres:yjrhr1102@localhost:5432/newdb3" #開発用aa
-# db_uri = os.environ.get('DATABASE_URL') #本番用HEROKU_POSTGRESQL_COBALTHEROKU_POSTGRESQL_DIANA_URL
+# db_uri = "postgresql://postgres:yjrhr1102@localhost:5432/newdb3" #開発用aa
+db_uri = os.environ.get('DATABASE_URL') #本番用HEROKU_POSTGRESQL_COBALTHEROKU_POSTGRESQL_DIANA_URL
 app.config['SQLALCHEMY_DATABASE_URI'] = db_uri 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
