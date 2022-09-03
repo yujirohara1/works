@@ -1420,6 +1420,32 @@ def getOrderInfomation():
 
 
 
+
+@app.route('/getCompleteInfomation')
+def getCompleteInfomation():
+  sql = ""
+  sql = sql + " select '2020/9/30' upload_date, '令和元年度財務書類_納品用.zip' file_name, null approved_date , '財務書類一式、付属明細書、固定資産台帳、その他関係書類' content_description union all "
+  sql = sql + " select '2020/10/2' upload_date, '令和元年度財務書類_納品用_修正版.zip' file_name, '2020/10/15' approved_date , '財務書類一式、付属明細書、固定資産台帳、その他関係書類' content_description union all "
+  sql = sql + " select '2020/9/18' upload_date, '令和２年度財務書類_納品用.zip' file_name, '2021/9/30' approved_date , '財務書類一式、付属明細書、固定資産台帳、その他関係書類' content_description "
+  
+
+  datalist = []
+  resultset=[]
+  datalist = db.session.execute(text(sql)).fetchall()
+
+  for d in datalist:
+    resultset.append(
+      {
+        "upload_date":d["upload_date"],
+        "file_name":d["file_name"],
+        "approved_date":d["approved_date"],
+        "content_description":d["content_description"],
+      }
+    )
+
+  return jsonify({'data': json.dumps(resultset,default=decimal_default_proc)})
+
+
 @app.route('/getRecordSizeInfomation')
 def getRecordSizeInfomation():
   sql = ""

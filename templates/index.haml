@@ -9,17 +9,17 @@
       %div(style="float:left; padding-right:30px")
         <header class="pb-3 mb-4 border-bottom">
           <a href="/" class="d-flex align-items-center text-dark text-decoration-none">
-            %span.fs-4
+            %span.fs-4(style="font-weight:bold; font-size:2rem !Important")
               <i class="bi bi-clouds-fill" style="padding-right:10px"></i>
-              Gov Tech Works　ガヴテックワークス　BETA
+              Gov Tech Works　ガヴテックワークス　Beta
           </a>
         </header>
 
       %div(style="float:left; padding-right:30px")
-        %div#divLblWelcomeMessage
+        %div#divLblWelcomeMessage(style="top:10px; position:relative")
           
       %div(style="float:right;padding-right:30px")
-        %a.btn.btn-dark.btn-sm(href="/logout/" role="button")
+        %a.btn.btn-dark.btn-sm(href="/logout/" role="button" style="top:10px; position:relative")
           サインアウト
   %div.row
     %div.col-4
@@ -32,7 +32,7 @@
           </h2>
           <div id="accdPanelBody-LeftTop" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftTop">
             %div.accordion-body
-              過去の注文情報を確認することができます。新たに注文する場合「新しい依頼を作成する」をクリックしてください。
+              <strong>過去の注文情報を確認することができます。新たに注文する場合「新しい依頼を作成する」をクリックしてください。</strong>
               %hr
               %div.row
                 %div.col-12
@@ -53,7 +53,7 @@
           </h2>
           <div id="accdPanelBody-LeftMiddle" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftMiddle">
             %div.accordion-body
-              取り込んだデータの件数を表示しています。
+              <strong>取り込んだデータの件数を表示しています。</strong>
               %hr
               %div.row
                 %div.col-12
@@ -74,7 +74,7 @@
           </h2>
           <div id="accdPanelBody-LeftBottom" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftBottom">
             %div.accordion-body
-              依頼先にメッセージや添付ファイルを送ることができます。
+              <strong>依頼先にメッセージや添付ファイルを送ることができます。</strong>
               %hr
               %div.row
                 %div.col-12
@@ -104,6 +104,7 @@
       </div>
 
 
+
     %div.col-4
       <div class="accordion" id="accdCenter">
         <div class="accordion-item">
@@ -113,9 +114,16 @@
             </button>
           </h2>
           <div id="accdPanelBody-CenterTop" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-CenterTop">
-            <div class="accordion-body">
-              <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            %div.accordion-body
+              <strong>成果物が納品されています。ファイル名を選択してダウンロードボタンで入手してください。</strong>
+              %hr
+              %div.row
+                %div.col-12
+                  %div#accdPanelCenterTopTableArea
+              %div.row
+                %div.col-12
+                  %button.btn.btn-primary(type="button")
+                    ダウンロード
           </div>
         </div>
         %hr
@@ -126,9 +134,41 @@
             </button>
           </h2>
           <div id="accdPanelBody-CenterMiddle" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-CenterMiddle">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            %div.accordion-body
+              %div.row
+                %div.col-10
+                  <strong>お気に入りの会計士を見つけよう。</strong>
+                %div.col-2(style="text-align:right")
+                  %button.btn.btn-sm.btn-primary(type="button")
+                    詳細検索
+              %hr
+              %div.row
+                %div.col-2
+                  <img src="../static/image/account_pattern1.svg" style="max-width: 100%; height: auto; cursor:pointer" class="img-thumbnail" alt="...">
+                %div.col-10
+                  %div
+                    <span class="badge bg-success" style="width:20%">事業所名</span>
+                    <span style="padding-left:20px">さとう会計事務所</span>
+                  %div
+                    <span class="badge bg-success" style="width:20%">評価点</span>
+                    <span style="padding-left:20px; color:#dd4646">★★★★☆</span>
+                  %div
+                    <span class="badge bg-success" style="width:20%">地域</span>
+                    <span style="padding-left:20px">新潟県</span>
+              %hr
+              %div.row
+                %div.col-2
+                  <img src="../static/image/account_pattern1.svg" style="max-width: 100%; height: auto; cursor:pointer" class="img-thumbnail" alt="...">
+                %div.col-10
+                  %div
+                    <span class="badge bg-success" style="width:20%">事業所名</span>
+                    <span style="padding-left:20px">すずき会計事務所</span>
+                  %div
+                    <span class="badge bg-success" style="width:20%">評価点</span>
+                    <span style="padding-left:20px; color:#dd4646">★☆☆☆☆</span>
+                  %div
+                    <span class="badge bg-success" style="width:20%">地域</span>
+                    <span style="padding-left:20px">東京都内</span>
           </div>
         </div>
         %hr
@@ -139,13 +179,91 @@
             </button>
           </h2>
           <div id="accdPanelBody-CenterBottom" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-CenterBottom">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            %div.accordion-body
+              <strong>情報公開を許可設定している地方公共団体の一覧です。経営状況を確認できます。</strong>
+              %hr
+              %div.row
+                %div.col-12
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    ○○市
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    ××町
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    ローマ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    パリ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    モスクワ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    シドニー
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    上海
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    シカゴ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    アトランタ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    リオデジャネイロ
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    ワシントン
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    モントリオール
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    ロサンゼルス
+                  %span.badge.rounded-pill.bg-warning.text-dark(style="font-size:1rem;margin-right:4px;cursor:pointer; margin-bottom:3px")
+                    東京
+              %hr
+              %div.row
+                %div.col-6
+                  %button.btn.btn-sm.btn-primary(type="button")
+                    もっと見る
+                %div.col-6(style="text-align:right")
+                  %button.btn.btn-sm.btn-primary(type="button")
+                    あなたも公開しますか？
+
           </div>
         </div>
       </div>
 
+
+
+
+    %div.col-4
+      <div class="accordion" id="accdRight">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="accdPanelHead-RightTop">
+            <button id="btnAccdPanelHead-RightTop" class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#accdPanelBody-RightTop" aria-expanded="true" aria-controls="accdPanelBody-RightTop">
+              <i class="bi bi-boxes dashboard-bIcon"></i>スケジュール管理
+            </button>
+          </h2>
+          <div id="accdPanelBody-RightTop" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-RightTop">
+            %div.accordion-body
+            
+              %div.row
+                <a class="circle" href="#">1</a>
+                
+              %div.row
+                %div.col-6
+                  <div class="v_line_left">
+                    some<br> other<br> content<br>
+                  </div>
+                %div.col-6
+                  aaaa
+
+              %div.row
+                <a class="circle" href="#">1</a>
+
+              %div.row
+                %div.col-6
+                  <div class="v_line_left">
+                    some<br> other<br> content<br>
+                  </div>
+                %div.col-6
+                  aaaa
+
+          </div>
+        </div>
+      </div>
 
 
 {% endblock %}

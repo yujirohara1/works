@@ -9,8 +9,56 @@ window.onload = function(){
   createTableLeftTop();
   createTableLeftMiddle();
 
+  
+  createTableCenterTop();
+
 }
 
+
+function createTableCenterTop(){
+
+  createTableLoading("accdPanelCenterTopTableArea","成果物情報を取得中・・・")
+
+  fetch('/getCompleteInfomation' , {
+    method: 'GET',
+    'Content-Type': 'application/json'
+  })
+  .then(res => res.json())
+  .then(jsonData => {
+    var list = JSON.parse(jsonData.data);
+    destroyTableLoading("accdPanelCenterTopTableArea");
+
+    var hdText = ["納品日", "ファイル名", "承認日"];
+    var hdColWidth = ["20%","60%","20%"];
+    var tableId = initTable("accdPanelCenterTopTableArea", hdText, hdColWidth,5);
+    var tbody = document.getElementById(tableId+"Body");
+
+    for(let i in list){
+      var trow = document.createElement('tr');
+      trow.addEventListener('click', function() {
+        tRowSetColor(event.target,tableId);
+      });
+      var td1 = document.createElement('td');
+      var td2 = document.createElement('td');
+      var td3 = document.createElement('td');
+      td1.innerText = list[i].upload_date;
+      td2.innerText = list[i].file_name;
+      td3.innerText = list[i].approved_date;
+      //td4.appendChild(createInTableButton("詳細","primary"));
+      //td4.innerText = list[i].supplier_name;
+      td1.classList.add("tdcell-center");
+      td2.classList.add("tdcell-center");
+      td3.classList.add("tdcell-center");
+      trow.appendChild(td1);
+      trow.appendChild(td2);
+      trow.appendChild(td3);
+      tbody.appendChild(trow);
+    }
+  })
+  .catch(error => { 
+    console.log(error)
+  });
+}
 
 function createTableLeftMiddle(){
 
@@ -76,7 +124,7 @@ function createTableLeftTop(){
     destroyTableLoading("accdPanelLeftTopTableArea");
 
     var hdText = ["注文確定日", "依頼内容", "依頼先", "詳細"];
-    var hdColWidth = ["20%","35%","33%","12%"];
+    var hdColWidth = ["15%","35%","30%","20%"];
     var tableId = initTable("accdPanelLeftTopTableArea", hdText, hdColWidth,5);
     var tbody = document.getElementById(tableId+"Body");
 
@@ -92,7 +140,7 @@ function createTableLeftTop(){
       td1.innerText = list[i].order_date;
       td2.innerText = list[i].request_content;
       td3.innerText = list[i].supplier_name;
-      td4.appendChild(createInTableButton("詳細","primary"));
+      td4.appendChild(createInTableButton("注文詳細","success"));
       //td4.innerText = list[i].supplier_name;
       td1.classList.add("tdcell-center");
       td2.classList.add("tdcell-left");

@@ -396,6 +396,25 @@ table.dataTable thead tr {
     font-size:1.2rem;
 }
 
+
+.v_line_left {
+    border-left: thick solid red;
+    padding-left: 10px;
+    position:relative;
+    left: 7px;
+  }
+
+
+.circle{
+    display: inline-block;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: skyblue;
+    text-align:center;
+    line-height: 40px;
+}
+
 .alert-messages{
     color:#dc3545
 }
