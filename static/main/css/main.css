@@ -368,7 +368,7 @@ table.dataTable thead tr {
 .table_sticky {
     display: block;
     overflow-y: scroll;
-    height: calc(100vh/3);
+    /* height: calc(100vh/3); */
 }
 .table_sticky thead th {
     position: sticky;
@@ -378,7 +378,7 @@ table.dataTable thead tr {
     color: white;
     text-align: center;
     font-size: 0.9rem;
-    font-weight: normal;
+    font-weight: bold;
 }
 
 .rank_number{
@@ -391,6 +391,10 @@ table.dataTable thead tr {
     background-color: #454545!important;
 }
 
+.accordion-button {
+    font-weight: bold;
+    font-size:1.2rem;
+}
 
 .alert-messages{
     color:#dc3545

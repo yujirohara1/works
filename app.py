@@ -1399,8 +1399,8 @@ def getAssignedBarChartData(projectId, memberIds, rdStatus):
 @app.route('/getOrderInfomation')
 def getOrderInfomation():
   sql = ""
-  sql = sql + "   select '2020/12/1' order_date, '令和元年度財務諸表作成' request_content, 'すずき会計事務所' supplier_name union all "
-  sql = sql + "   select '2021/8/4' order_date, '令和２年度財務諸表作成' request_content, 'さとう会計事務所' supplier_name      "
+  sql = sql + "   select '2020/12/1' order_date, '令和元年度財務書類作成' request_content, 'すずき会計事務所' supplier_name union all "
+  sql = sql + "   select '2021/8/4' order_date, '令和２年度財務書類作成' request_content, 'さとう会計事務所' supplier_name      "
   sql = sql + "       "
 
   datalist = []

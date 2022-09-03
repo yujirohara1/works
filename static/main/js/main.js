@@ -13,7 +13,7 @@ window.onload = function(){
 
 function createTableLeftTop(){
 
-  createTableLoading("accdPanelLeftTopTableArea","データラベルテーブルを作成中・・・")
+  createTableLoading("accdPanelLeftTopTableArea","依頼内容を確認中・・・")
 
   fetch('/getOrderInfomation' , {
     method: 'GET',
@@ -26,7 +26,7 @@ function createTableLeftTop(){
 
     var hdText = ["注文確定日", "依頼内容", "依頼先"];
     var hdColWidth = ["26%","40%","35%"];
-    var tableId = initTable("accdPanelLeftTopTableArea", hdText, hdColWidth,3.5);
+    var tableId = initTable("accdPanelLeftTopTableArea", hdText, hdColWidth,5);
     var tbody = document.getElementById(tableId+"Body");
 
     for(let i in list){
@@ -86,10 +86,10 @@ function createWelcomMessage(){
 }
 
 
-// var myCollapsible = document.getElementById('accdPanelBody-CenterTop')
-// myCollapsible.addEventListener('show.bs.collapse', function () {
-//   return false;
-// })
+var myCollapsible = document.getElementById('accdPanelBody-LeftTop')
+myCollapsible.addEventListener('hidden.bs.collapse', function () {
+  createTableLeftTop();
+})
 
 
 
@@ -618,7 +618,7 @@ function initTable(tableDivId, hdText, hdWidth, heightRatio){
   table.appendChild(tbody);
 
   table.classList.add("table", "table-bordered", "table_sticky", "table-hover", "fs-6");
-  table.style.height = "calc(100vh/" + heightRatio + ")";
+  //table.style.height = "calc(100vh/" + heightRatio + ")";
 
   var tmp = document.getElementById(tableDivId);
   while(tmp.lastChild){
