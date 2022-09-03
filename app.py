@@ -108,9 +108,9 @@ db.init_app(app)
 ma.init_app(app)
 # q = Queue(connection=conn)
         
-@app.route("/favicon.ico")
-def favicon():
-    return app.send_static_file("favicon.ico")
+# @app.route("/favicon.ico")
+# def favicon():
+#     return app.send_static_file("favicon.ico")
 
         
 def isfloat(strval):
@@ -1394,6 +1394,30 @@ def getAssignedBarChartData(projectId, memberIds, rdStatus):
   # startDate += delta
   
   return jsonify({'data': json.dumps(resultset,default=decimal_default_proc),'data2': json.dumps(resultset2,default=decimal_default_proc)})
+
+
+@app.route('/getOrderInfomation')
+def getOrderInfomation():
+  sql = ""
+  sql = sql + "   select '2020/12/1' order_date, '令和元年度財務諸表作成' request_content, 'すずき会計事務所' supplier_name union all "
+  sql = sql + "   select '2021/8/4' order_date, '令和２年度財務諸表作成' request_content, 'さとう会計事務所' supplier_name      "
+  sql = sql + "       "
+
+  datalist = []
+  resultset=[]
+  datalist = db.session.execute(text(sql)).fetchall()
+
+  for d in datalist:
+    resultset.append(
+      {
+        "order_date":d["order_date"],
+        "request_content":d["request_content"],
+        "supplier_name":d["supplier_name"],
+      }
+    )
+
+  return jsonify({'data': json.dumps(resultset,default=decimal_default_proc)})
+
 
 
 

@@ -5,12 +5,20 @@ body{
     background-size: cover;
 }
 
+
+.dashboard-bIcon{
+    font-size:20px;
+    padding-right: 12px;
+}
+
+
 td.highlight {
     background-color: whitesmoke !important;
 }
 
 .row_selected td {
     background-color: rgba(255, 99, 132, 0.2) !important; /* Add !important to make sure override datables base styles */
+    
 }
 
 table.dataTable thead tr {
@@ -50,7 +58,8 @@ table.dataTable thead tr {
 }
 
 .RowSelected{
-    background-color: #00d4ff99 !important;
+    background-color: #e7f1ff !important;
+    
 }
 
 .row_header{
@@ -365,10 +374,11 @@ table.dataTable thead tr {
     position: sticky;
     top: -1px;
     z-index: 1;
-    background-color: #000000;
+    background-color:#0c63e4;
     color: white;
     text-align: center;
-    font-size: 0.75em;
+    font-size: 0.9rem;
+    font-weight: normal;
 }
 
 .rank_number{
@@ -423,7 +433,7 @@ table.dataTable thead tr {
 
 .table_sticky tbody td {
     /* white-space: nowrap; */
-    font-size: 0.85em;
+    font-size: 0.9rem;
 }
 
 .loadingDiv {
