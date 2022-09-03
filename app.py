@@ -1420,8 +1420,28 @@ def getOrderInfomation():
 
 
 
+@app.route('/getRecordSizeInfomation')
+def getRecordSizeInfomation():
+  sql = ""
+  sql = sql + "   select 2020 kai_nen, 12345 account_record_size, 23456 journal_record_size, 80000 asset_record_size union all"
+  sql = sql + "   select 2021 kai_nen, 54321 account_record_size, 65432 journal_record_size, 80001 asset_record_size "
+  sql = sql + "       "
 
-#
+  datalist = []
+  resultset=[]
+  datalist = db.session.execute(text(sql)).fetchall()
+
+  for d in datalist:
+    resultset.append(
+      {
+        "kai_nen":d["kai_nen"],
+        "account_record_size":d["account_record_size"],
+        "journal_record_size":d["journal_record_size"],
+        "asset_record_size":d["asset_record_size"],
+      }
+    )
+
+  return jsonify({'data': json.dumps(resultset,default=decimal_default_proc)})
 
 
 @app.route('/getHotOrColdSammary/<projectId>/<year>/<issueStatus>')

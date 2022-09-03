@@ -7,7 +7,58 @@ window.onload = function(){
   createWelcomMessage();
 
   createTableLeftTop();
+  createTableLeftMiddle();
 
+}
+
+
+function createTableLeftMiddle(){
+
+  createTableLoading("accdPanelLeftMiddleTableArea","登録データの件数をカウントしています・・・")
+
+  fetch('/getRecordSizeInfomation' , {
+    method: 'GET',
+    'Content-Type': 'application/json'
+  })
+  .then(res => res.json())
+  .then(jsonData => {
+    var list = JSON.parse(jsonData.data);
+    destroyTableLoading("accdPanelLeftMiddleTableArea");
+
+    var hdText = ["会計年度", "伝票件数", "仕訳件数", "資産件数"];
+    var hdColWidth = ["10%","30%","30%","30%"];
+    var tableId = initTable("accdPanelLeftMiddleTableArea", hdText, hdColWidth,5);
+    var tbody = document.getElementById(tableId+"Body");
+
+    for(let i in list){
+      var trow = document.createElement('tr');
+      trow.addEventListener('click', function() {
+        tRowSetColor(event.target,tableId);
+      });
+      var td1 = document.createElement('td');
+      var td2 = document.createElement('td');
+      var td3 = document.createElement('td');
+      var td4 = document.createElement('td');
+      td1.innerText = list[i].kai_nen;
+      td2.innerText = list[i].account_record_size;
+      td3.innerText = list[i].journal_record_size;
+      td4.innerText = list[i].asset_record_size;
+      //td4.appendChild(createInTableButton("詳細","primary"));
+      //td4.innerText = list[i].supplier_name;
+      td1.classList.add("tdcell-center");
+      td2.classList.add("tdcell-center");
+      td3.classList.add("tdcell-center");
+      td4.classList.add("tdcell-center");
+      trow.appendChild(td1);
+      trow.appendChild(td2);
+      trow.appendChild(td3);
+      trow.appendChild(td4);
+      tbody.appendChild(trow);
+    }
+  })
+  .catch(error => { 
+    console.log(error)
+  });
 }
 
 
@@ -24,8 +75,8 @@ function createTableLeftTop(){
     var list = JSON.parse(jsonData.data);
     destroyTableLoading("accdPanelLeftTopTableArea");
 
-    var hdText = ["注文確定日", "依頼内容", "依頼先"];
-    var hdColWidth = ["26%","40%","35%"];
+    var hdText = ["注文確定日", "依頼内容", "依頼先", "詳細"];
+    var hdColWidth = ["20%","35%","33%","12%"];
     var tableId = initTable("accdPanelLeftTopTableArea", hdText, hdColWidth,5);
     var tbody = document.getElementById(tableId+"Body");
 
@@ -37,23 +88,42 @@ function createTableLeftTop(){
       var td1 = document.createElement('td');
       var td2 = document.createElement('td');
       var td3 = document.createElement('td');
+      var td4 = document.createElement('td');
       td1.innerText = list[i].order_date;
       td2.innerText = list[i].request_content;
       td3.innerText = list[i].supplier_name;
+      td4.appendChild(createInTableButton("詳細","primary"));
+      //td4.innerText = list[i].supplier_name;
       td1.classList.add("tdcell-center");
       td2.classList.add("tdcell-left");
       td3.classList.add("tdcell-left");
+      td4.classList.add("tdcell-center");
       trow.appendChild(td1);
       trow.appendChild(td2);
       trow.appendChild(td3);
+      trow.appendChild(td4);
       tbody.appendChild(trow);
     }
   })
   .catch(error => { 
     console.log(error)
   });
-
 }
+
+
+
+function createInTableButton(caption,color){
+  var btn = document.createElement('a');
+  btn.classList.add("btn","btn-" + color,"btn-sm");
+  setAttributes(btn,"type,button/dummy,dummy");
+  btn.innerText = caption;
+  btn.style.paddingBottom = "1px";
+  btn.style.paddingTop = "1px";
+  btn.style.fontSize = "11.5px";
+  return btn;
+}
+
+
 
 function tRowSetColor(eventObject, tableId){
   var table = document.getElementById(tableId);
@@ -630,6 +700,13 @@ function initTable(tableDivId, hdText, hdWidth, heightRatio){
   return tableId;
 }
 
+function setAttributes(dom, str){
+  var tmp = str.split("/");
+  for (let a in tmp){
+    b = tmp[a].split(",");
+    dom.setAttribute(b[0], b[1]);
+  }
+}
 
 //テーブルの見出し行を作成する。戻したDOMはtheadにappendされる想定。
 function createTableHeader(hdText, width){
@@ -639,6 +716,7 @@ function createTableHeader(hdText, width){
     thA.innerHTML = hdText[hd];
     thA.style.textAlign = "center";
     thA.style.verticalAlign = "middle";
+    thA.style.whiteSpace="nowrap";
     if(width!=null){
       try{thA.style.width=width[hd];}catch(e){
         openErrorMessageDialog(e.message);
@@ -1381,13 +1459,6 @@ function createTableLoading(locationId, messageLabel){
 // }
 
 
-// function setAttributes(dom, str){
-//   var tmp = str.split("/");
-//   for (let a in tmp){
-//     b = tmp[a].split(",");
-//     dom.setAttribute(b[0], b[1]);
-//   }
-// }
 
 
 

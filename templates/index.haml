@@ -32,6 +32,8 @@
           </h2>
           <div id="accdPanelBody-LeftTop" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftTop">
             %div.accordion-body
+              過去の注文情報を確認することができます。新たに注文する場合「新しい依頼を作成する」をクリックしてください。
+              %hr
               %div.row
                 %div.col-12
                   %div#accdPanelLeftTopTableArea
@@ -50,9 +52,17 @@
             </button>
           </h2>
           <div id="accdPanelBody-LeftMiddle" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftMiddle">
-            <div class="accordion-body">
-              <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            %div.accordion-body
+              取り込んだデータの件数を表示しています。
+              %hr
+              %div.row
+                %div.col-12
+                  %div#accdPanelLeftMiddleTableArea
+              %div.row
+                %div.col-12
+                  %button.btn.btn-primary(type="button")
+                    Excel出力
+              
           </div>
         </div>
         %hr
@@ -63,9 +73,32 @@
             </button>
           </h2>
           <div id="accdPanelBody-LeftBottom" class="accordion-collapse collapse show" aria-labelledby="accdPanelHead-LeftBottom">
-            <div class="accordion-body">
-              <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-            </div>
+            %div.accordion-body
+              依頼先にメッセージや添付ファイルを送ることができます。
+              %hr
+              %div.row
+                %div.col-12
+                  %div.input-group.input-group-sm.mb-3
+                    <span class="input-group-text" id="basic-addon1">連絡先</span>
+                    <select class="form-select form-select-sm" aria-label=".form-select-sm example">
+                      <option value="1">さとう会計事務所</option>
+                      <option value="2">すずき会計事務所</option>
+                    </select>
+              %div.row
+                %div.col-12
+                  %div.input-group.input-group-sm.mb-3
+                    <textarea class="form-control" placeholder="連絡内容をココに書いて、送信ボタンをクリック。" aria-label="With textarea" style="height:100px;"></textarea>
+              %div.row
+                %div.col-auto
+                  %div.input-group.input-group-sm.mb-3
+                    %input.form-control#inpFileImport(type="file")
+              %div.row
+                %div.col-6
+                  %button.btn.btn-sm.btn-primary(type="button")
+                    送信
+                %div.col-6(style="text-align:right")
+                  %button.btn.btn-sm.btn-primary(type="button")
+                    過去のコンタクトを確認
           </div>
         </div>
       </div>
