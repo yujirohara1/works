@@ -8,8 +8,6 @@ window.onload = function(){
 
   createTableLeftTop();
   createTableLeftMiddle();
-
-  
   createTableCenterTop();
 
 }
@@ -88,9 +86,9 @@ function createTableLeftMiddle(){
       var td3 = document.createElement('td');
       var td4 = document.createElement('td');
       td1.innerText = list[i].kai_nen;
-      td2.innerText = list[i].account_record_size;
-      td3.innerText = list[i].journal_record_size;
-      td4.innerText = list[i].asset_record_size;
+      td2.innerText = Number(list[i].account_record_size).toLocaleString();
+      td3.innerText = Number(list[i].journal_record_size).toLocaleString(); //list[i].journal_record_size;
+      td4.innerText = Number(list[i].asset_record_size).toLocaleString(); //list[i].asset_record_size;
       //td4.appendChild(createInTableButton("詳細","primary"));
       //td4.innerText = list[i].supplier_name;
       td1.classList.add("tdcell-center");
