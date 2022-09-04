@@ -23,6 +23,10 @@
         %a#btnOpenClose.btn.btn-outline-primary.btn-sm(href="#" role="button" style="top:10px; position:relative")
           折りたたむ
 
+      %div(style="float:left;padding-right:30px")
+        %a#btnIntroduction.btn.btn-outline-primary.btn-sm(href="#" role="button" style="top:10px; position:relative" data-bs-toggle="modal" data-bs-target="#modalIntroduction")
+          はじめかた
+
       %div(style="float:right;padding-right:30px")
         %a.btn.btn-dark.btn-sm(href="/logout/" role="button" style="top:10px; position:relative")
           サインアウト
@@ -384,12 +388,30 @@
       </div>
 
 
+
+
+
+<div class="modal fade" id="modalIntroduction" tabindex="-1" aria-labelledby="exampleModalXlLabel" aria-hidden="true" style="display: none;">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title h4" id="exampleModalXlLabel">はじめかた</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      %div.modal-body#modalBodyIntroduction
+    </div>
+  </div>
+</div>
+
+
+
 {% endblock %}
 
 {% block scripts %}
   <script src="../static/holidays/lib/japanese-holidays.min.js"></script>
   <script src="../static/main/js/constants.js"></script>
   <script src="../static/main/js/main.js"></script>
+  <script src="../static/main/js/introduction.js"></script>
 
 {% endblock  %}
 

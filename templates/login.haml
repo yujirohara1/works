@@ -13,18 +13,68 @@
       </a>
     </header>
 
-    <div class="p-5 mb-4 bg-light rounded-3">
-      <div class="container-fluid py-5">
-        <h1 class="display-5 fw-bold">財務書類作成支援の決定版</h1>
-        %p.col-md-8.fs-4
-          地方公共団体と会計士さんをマッチング。地方公会計システムの新標準。
-        %p.col-md-8.fs-4
-          作成スケジュールや提供データの管理、公会計と固定資産管理機能、チャットによる連絡が可能。
-        %form(action="/demo/" method="POST")
-          %button#btnGotoDemo.btn.btn-success.btn-lg(type="submit")
-            体験版を利用する
+    %div.p-5.mb-4.bg-light.rounded-3(style="padding:1rem !Important")
+      <div id="carouselExampleDark" class="carousel carousel-dark slide" data-bs-ride="carousel" data-bs-interval="false">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="1" aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleDark" data-bs-slide-to="2" aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner"  style="height:320px">
+          <div class="carousel-item active" >
+
+            %div.container-fluid.py-5(style="padding-left:50px")
+              <h1 class="display-5 fw-bold">財務書類作成支援の決定版</h1>
+              %p.col-md-8.fs-4
+                地方公共団体と会計士さんをマッチング。地方公会計システムの新標準。
+              %p.col-md-8.fs-4
+                作成スケジュールや提供データの管理、公会計と固定資産管理機能、チャットによる連絡が可能。
+              %form(action="/demo/" method="POST")
+                %button#btnGotoDemo.btn.btn-success.btn-lg(type="submit")
+                  体験版を利用する
+
+          </div>
+          <div class="carousel-item" >
+
+            %div.container-fluid.py-5(style="padding-left:50px")
+              <h1 class="display-5 fw-bold">財務書類作成支援の決定版</h1>
+              %p.col-md-8.fs-4
+                地方公共団体と会計士さんをマッチング。地方公会計システムの新標準。
+              %p.col-md-8.fs-4
+                作成スケジュールや提供データの管理、公会計と固定資産管理機能、チャットによる連絡が可能。
+              %form(action="/demo/" method="POST")
+                %button#btnGotoDemo.btn.btn-success.btn-lg(type="submit")
+                  体験版を利用する
+
+          </div>
+          <div class="carousel-item">
+            %div.container-fluid.py-5(style="padding-left:50px")
+              <h1 class="display-5 fw-bold">財務書類作成支援の決定版</h1>
+              %p.col-md-8.fs-4
+                地方公共団体と会計士さんをマッチング。地方公会計システムの新標準。
+              %p.col-md-8.fs-4
+                作成スケジュールや提供データの管理、公会計と固定資産管理機能、チャットによる連絡が可能。
+              %form(action="/demo/" method="POST")
+                %button#btnGotoDemo.btn.btn-success.btn-lg(type="submit")
+                  体験版を利用する
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleDark" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-    </div>
+
+
+
+
+
+
+
 
     <div class="row align-items-md-stretch">
       <div class="col-md-6">
@@ -77,6 +127,7 @@
         </div>
       </div>
     </div>
+
 
     <footer class="pt-3 mt-4 text-muted border-top">
       © 2021

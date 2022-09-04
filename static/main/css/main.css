@@ -454,6 +454,21 @@ table.dataTable thead tr {
     color:#dc3545
 }
 
+/* 
+.carousel-control-next-icon{
+    position: relative;
+    right: -100px;
+}
+
+.carousel-control-prev-icon {
+    position: relative;
+    left: -100px;
+} */
+
+.carousel-indicators {
+    margin-bottom: -1rem;
+}
+
 .form-control {
     display: block;
     width: 100%;
